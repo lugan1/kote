@@ -28,5 +28,13 @@
 ---
 
 ```kotlin
+fun solution(n: Int): Int {
+    var answer = 0
 
+    answer = (1..n)
+        .filter { i -> 12 % i == 0 }
+        .reduce { acc, i -> acc + i }
+
+    return answer
+}
 ```
