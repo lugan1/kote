@@ -42,3 +42,72 @@
 **입출력 예 #1**
 
 - 두 선수는 1번 음식 3개, 3번 음식 1개를 먹게 되므로 음식의 배치는 "111303111"입니다.
+
+# 정답
+
+---
+
+```kotlin
+class Solution {
+    fun solution(food: IntArray): String {
+        var answer: String = ""
+        
+        answer += pre(food) + 0 + post(food)
+        
+        return answer
+    }
+    
+    fun pre(food: IntArray): String {
+        var result: String = ""
+        for (i in 1.. (food.size - 1)) {
+        //i는 음식이름, 아이템은 음식갯수
+
+            for (item in 1 .. (food[i] / 2)) {
+                result += i
+            }
+        }
+
+        return result;
+    }
+
+    fun post(food: IntArray) : String {
+        var result: String = ""
+
+        for (i in food.size - 1 downTo 1) {
+
+            for (item in 1 .. (food[i] / 2)) {
+                 result += i
+            }
+        }
+
+        return result
+    }
+}
+```
+
+- 순차적으로 순회하며 , (아이템의 갯수 / 2) 만큼 index 를 이어붙인다. (prefix)
+- 순차가 끝나면 0 을 붙인다.
+- 다시 순차적으로 (내림차순으로) 순회하며 , (아이템의 갯수 / 2) 만큼 index를 이어붙인다. (postfix)
+
+걸린 시간 복잡도는
+
+$$
+n^2 + n^2 = O(n^2)
+$$
+
+정석 :
+
+```kotlin
+class Solution {
+    fun solution(food: IntArray): String {
+        val sb = StringBuilder()
+        for (i in 1..food.lastIndex) {
+            repeat(food[i] / 2) { sb.append(i) }
+        }
+        val reversed = sb.reversed()
+        sb.append(0)
+        sb.append(reversed)
+        return sb.toString()
+    }
+}
+```
