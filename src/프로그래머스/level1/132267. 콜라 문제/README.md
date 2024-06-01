@@ -62,7 +62,7 @@ tailrec fun solution(a: Int, b: Int, n: Int, total: Int = 0): Int {
     - 이 문제의 경우 **남은 빈병 n(left) 가 마트에게 줄수있는 값(a)보다 작으면** 마트에게 못준다. (탈출)
     - `n < a`
 
-![Untitled](/resource/132267 콜라문제-1.png)
+![Untitled](https://file.notion.so/f/f/a70d74a2-1c6a-4a43-be27-1e17f9232c60/ed825ec7-419f-455e-ab3b-5a6706f82f2f/Untitled.png?id=3d19a52c-b4e8-4ce7-9f23-d76b85402605&table=block&spaceId=a70d74a2-1c6a-4a43-be27-1e17f9232c60&expirationTimestamp=1717329600000&signature=hC00I8Jc04kU32_f3TeNH7tjhU5j_aXwDxkEvtJOFuo&downloadName=Untitled.png)
 
 - 유클리드 호제법의 계산방법이 생각나는 출력문이다.
 - 유클리드 호제법도 재귀방법으로 할 수 있을것 같다.
