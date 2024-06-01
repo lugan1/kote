@@ -37,6 +37,32 @@
 | 2 | 1 | 20 | 19 |
 | 3 | 1 | 20 | 9 |
 
+
+# 정답(2회차)
+
+---
+
+```kotlin
+/*
+* a : 요청 빈병 갯수 2
+* b : 받는 빈병 갯수 1
+* n : 현재 입력 갯수 20
+* */
+tailrec fun solution(a: Int, b: Int, n: Int, acc: Int = 0): Int {
+    var answer: Int = 0
+    val receive = (n / a) * b
+    val left = receive + (n % a)
+    answer = acc + receive
+    if(n < a) return answer
+    return solution(a, b, left, answer)
+}
+
+```
+
+- **나누어 떨어지지** 않아서 남은 것들도 처리 포함해야 한다.
+
+
+
 # 정답
 
 ---
