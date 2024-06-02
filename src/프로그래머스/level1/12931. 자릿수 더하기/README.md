@@ -24,7 +24,23 @@
 
 입출력 예 #29 + 8 + 7 = 24이므로 24를 return 하면 됩니다.
 
-# 정답
+# 정답 (2024-05-30)
+
+---
+
+```kotlin
+fun solution(n: Int): Int {
+    var answer = 0
+
+    answer = n.toString()
+        .map { c -> c.digitToInt() }
+        .reduce { acc, i -> acc + i }
+
+    return answer
+}
+```
+
+# 정답 (2023-01-11)
 
 ---
 
@@ -40,17 +56,6 @@ def solution(n):
     return answer
 ```
 
-```kotlin
-fun solution(n: Int): Int {
-    var answer = 0
-
-    answer = n.toString()
-        .map { c -> c.digitToInt() }
-        .reduce { acc, i -> acc + i }
-
-    return answer
-}
-```
 
 # 참고
 

@@ -43,7 +43,43 @@
 
 - 두 선수는 1번 음식 3개, 3번 음식 1개를 먹게 되므로 음식의 배치는 "111303111"입니다.
 
-# 정답
+# 정답 (2024-05-31)
+
+---
+
+```kotlin
+fun solution(n: IntArray): String {
+    var answer = ""
+
+    val evens = n
+        .drop(1)
+        .map { i -> i/2 }
+
+    //[1, 2, 3]
+
+    println("evens: $evens")
+
+    fun create(n: List<Int>, isReversed: Boolean = false): String {
+        return n.mapIndexed { i, count ->
+            var foods = ""
+            val index = if(isReversed) {
+                n.size - i-1
+            }
+            else {
+                i
+            }
+            repeat(count) { foods += index+1 }
+            return@mapIndexed foods
+        }.reduce{ acc, s -> acc + s }
+    }
+
+    answer = create(evens) + "0" + create(evens.asReversed(), true)
+
+    return answer
+}
+```
+
+# 정답 (2023-02-07)
 
 ---
 
@@ -89,13 +125,11 @@ class Solution {
 - 순차가 끝나면 0 을 붙인다.
 - 다시 순차적으로 (내림차순으로) 순회하며 , (아이템의 갯수 / 2) 만큼 index를 이어붙인다. (postfix)
 
-걸린 시간 복잡도는
+걸린 시간 복잡도 : 
 
-$$
 n^2 + n^2 = O(n^2)
-$$
 
-정석 :
+# 정석
 
 ```kotlin
 class Solution {

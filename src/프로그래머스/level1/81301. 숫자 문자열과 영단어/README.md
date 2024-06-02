@@ -74,80 +74,80 @@
 
 - 정확성 테스트 : 10초
 
-# 답
+# 정답 (2024-05-30)
 
 ---
 
-- 파이썬
+```kotlin
+class Solution {
+    private val dictionary = listOf(
+        "zero" to 0,
+        "one" to 1,
+        "two" to 2,
+        "three" to 3,
+        "four" to 4,
+        "five" to 5,
+        "six" to 6,
+        "seven" to 7,
+        "eight" to 8,
+        "nine" to 9
+    )
 
-    ```python
-    def solution(str):
-        answer = ''
-        
-        num = { "zero":"0", "one":"1", "two":"2", "three":"3", "four":"4", "five":"5", "six":"6",
-              "seven":"7", "eight":"8", "nine":"9"}
-        
-        temp =''
-    
-        for char in str:
-            #한글자씩 따옴
-            if char.isdigit():
-                #만약 따온 한 문자가 숫자이면
-                answer = answer+char
-                #정답뒤에 이어붙이면됨, 밑에 코드는 실행안해도 되니 continue;
-                continue;
-            
-            temp=temp+char
-            #만약 숫자를 못만나면 계속 문자열을 이어붙임
-            
-            if temp in num:
-                #만약 문자열을 이어붙이다가 사전에 정의된 문자열이 되는 순간
-                answer = answer+num[temp]
-                #정답에다가 해당 단어를 숫자로 바꿔서 이어붙임
-                temp = ''
-                #onetwo 이렇게 계속 이어붙이면 안되서 이어붙인순간 바로 초기화
-    
-        return int(answer)
-    ```
-
-- 코틀린
-
-    ```kotlin
-    class Solution {
-        private val dictionary = listOf(
-            "zero" to 0,
-            "one" to 1,
-            "two" to 2,
-            "three" to 3,
-            "four" to 4,
-            "five" to 5,
-            "six" to 6,
-            "seven" to 7,
-            "eight" to 8,
-            "nine" to 9
-        )
-    
-        fun solution(s: String): Int {
-            var number: String = ""
-            var text: String = ""
-            s.forEach { char ->
-                if(char.isDigit()) {
-                    number += char
-                    return@forEach
-                }
-    
-                text += char
-                val numberText = dictionary.firstOrNull { number -> text == number.first }?.second
-                if(numberText != null) {
-                    number += numberText
-                    text = ""
-                }
+    fun solution(s: String): Int {
+        var number: String = ""
+        var text: String = ""
+        s.forEach { char ->
+            if(char.isDigit()) {
+                number += char
+                return@forEach
             }
-    
-            var answer: Int = 0
-            answer = number.toInt()
-    
-            return answer
+
+            text += char
+            val numberText = dictionary.firstOrNull { number -> text == number.first }?.second
+            if(numberText != null) {
+                number += numberText
+                text = ""
+            }
         }
+
+        var answer: Int = 0
+        answer = number.toInt()
+
+        return answer
     }
-    ```
+}
+```
+
+# 정답 (2023-01-09)
+
+---
+
+```python
+def solution(str):
+    answer = ''
+    
+    num = { "zero":"0", "one":"1", "two":"2", "three":"3", "four":"4", "five":"5", "six":"6",
+          "seven":"7", "eight":"8", "nine":"9"}
+    
+    temp =''
+
+    for char in str:
+        #한글자씩 따옴
+        if char.isdigit():
+            #만약 따온 한 문자가 숫자이면
+            answer = answer+char
+            #정답뒤에 이어붙이면됨, 밑에 코드는 실행안해도 되니 continue;
+            continue;
+        
+        temp=temp+char
+        #만약 숫자를 못만나면 계속 문자열을 이어붙임
+        
+        if temp in num:
+            #만약 문자열을 이어붙이다가 사전에 정의된 문자열이 되는 순간
+            answer = answer+num[temp]
+            #정답에다가 해당 단어를 숫자로 바꿔서 이어붙임
+            temp = ''
+            #onetwo 이렇게 계속 이어붙이면 안되서 이어붙인순간 바로 초기화
+
+    return int(answer)
+```
