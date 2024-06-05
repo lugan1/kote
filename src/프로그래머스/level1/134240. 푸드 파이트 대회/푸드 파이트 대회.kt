@@ -23,31 +23,18 @@ fun main() {
 * 주의, 갯수가 짝수여야 한다.
 *  */
 fun solution(n: IntArray): String {
-    var answer = ""
+    val food = StringBuilder()
 
-    val evens = n
-        .drop(1)
-        .map { i -> i/2 }
-
-    //[1, 2, 3]
-
-    println("evens: $evens")
-
-    fun create(n: List<Int>, isReversed: Boolean = false): String {
-        return n.mapIndexed { i, count ->
-            var foods = ""
-            val index = if(isReversed) {
-                n.size - i-1
-            }
-            else {
-                i
-            }
-            repeat(count) { foods += index+1 }
-            return@mapIndexed foods
-        }.reduce{ acc, s -> acc + s }
+    n.forEachIndexed { name, count ->
+        if(name == 0) return@forEachIndexed
+        val single = count / 2
+        repeat(single) { food.append(name) }
     }
 
-    answer = create(evens) + "0" + create(evens.asReversed(), true)
+    val reversed = food.reversed()
 
-    return answer
+    food.append("0")
+        .append(reversed)
+
+    return food.toString()
 }

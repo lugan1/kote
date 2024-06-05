@@ -43,6 +43,30 @@
 
 - 두 선수는 1번 음식 3개, 3번 음식 1개를 먹게 되므로 음식의 배치는 "111303111"입니다.
 
+# 정답 (2024-06-05)
+
+---
+
+```kotlin
+fun solution(n: IntArray): String {
+    val food = StringBuilder()
+
+    n.forEachIndexed { name, count ->
+        if(name == 0) return@forEachIndexed
+        val single = count / 2
+        repeat(single) { food.append(name) }
+    }
+
+    val reversed = food.reversed()
+
+    food.append("0")
+        .append(reversed)
+
+    return food.toString()
+}
+```
+
+
 # 정답 (2024-05-31)
 
 ---
