@@ -15,7 +15,7 @@
 
 문제를 풀던 상빈이는 콜라 문제의 완벽한 해답을 찾았습니다. 상빈이가 푼 방법은 아래 그림과 같습니다. 우선 콜라 빈 병 20병을 가져가서 10병을 받습니다. 받은 10병을 모두 마신 뒤, 가져가서 5병을 받습니다. 5병 중 4병을 모두 마신 뒤 가져가서 2병을 받고, 또 2병을 모두 마신 뒤 가져가서 1병을 받습니다. 받은 1병과 5병을 받았을 때 남은 1병을 모두 마신 뒤 가져가면 1병을 또 받을 수 있습니다. 이 경우 상빈이는 총 10 + 5 + 2 + 1 + 1 = 19병의 콜라를 받을 수 있습니다.
 
-!https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/95ce1c11-2f21-4248-8bfc-e330299cbb9a/image6.PNG
+![Untitled](https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/95ce1c11-2f21-4248-8bfc-e330299cbb9a/image6.PNG)
 
 문제를 열심히 풀던 상빈이는 일반화된 콜라 문제를 생각했습니다. 이 문제는 빈 병 `a`개를 가져다주면 콜라 `b`병을 주는 마트가 있을 때, 빈 병 `n`개를 가져다주면 몇 병을 받을 수 있는지 계산하는 문제입니다. 기존 콜라 문제와 마찬가지로, 보유 중인 빈 병이 `a`개 미만이면, 추가적으로 빈 병을 받을 순 없습니다. 상빈이는 열심히 고심했지만, 일반화된 콜라 문제의 답을 찾을 수 없었습니다. 상빈이를 도와, 일반화된 콜라 문제를 해결하는 프로그램을 만들어 주세요.
 
@@ -88,7 +88,7 @@ tailrec fun solution(a: Int, b: Int, n: Int, total: Int = 0): Int {
     - 이 문제의 경우 **남은 빈병 n(left) 가 마트에게 줄수있는 값(a)보다 작으면** 마트에게 못준다. (탈출)
     - `n < a`
 
-![Untitled](https://file.notion.so/f/f/a70d74a2-1c6a-4a43-be27-1e17f9232c60/ed825ec7-419f-455e-ab3b-5a6706f82f2f/Untitled.png?id=3d19a52c-b4e8-4ce7-9f23-d76b85402605&table=block&spaceId=a70d74a2-1c6a-4a43-be27-1e17f9232c60&expirationTimestamp=1717329600000&signature=hC00I8Jc04kU32_f3TeNH7tjhU5j_aXwDxkEvtJOFuo&downloadName=Untitled.png)
+![Untitled](https://file.notion.so/f/f/a70d74a2-1c6a-4a43-be27-1e17f9232c60/ed825ec7-419f-455e-ab3b-5a6706f82f2f/Untitled.png?id=3d19a52c-b4e8-4ce7-9f23-d76b85402605&table=block&spaceId=a70d74a2-1c6a-4a43-be27-1e17f9232c60&expirationTimestamp=1718344800000&signature=Jj8ZYPNnzeynq7VTf8a4DBy6A5lLxORGKnKFX9j64Zw&downloadName=Untitled.png)
 
 - 유클리드 호제법의 계산방법이 생각나는 출력문이다.
 - 유클리드 호제법도 재귀방법으로 할 수 있을것 같다.
