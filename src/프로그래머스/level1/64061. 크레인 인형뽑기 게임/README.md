@@ -44,7 +44,54 @@
 
 ![크레인 문제-4](https://grepp-programmers.s3.ap-northeast-2.amazonaws.com/files/production/bb0f59c7-6b72-485a-8302-217fe53ea88f/crane_game_104.jpg)
 
-# 정답
+# 정답 (2024-06-17)
+
+---
+
+```kotlin
+/**
+ * @param board 크레인 게임화면의 격자 상태 (5x5 ~ 30x30)
+ * @param moves 크레인을 작동시킨 위치가 담긴 배열 ( 1 ~ 1000 )
+ * @return Int 크레인을 모두 움직인 후, 터트려 사라진 인형의 갯수
+ * */
+fun solution(board: Array<IntArray>, moves: IntArray): Int {
+    var answer = 0
+
+    //todo: 전체 순회를 하며, 해당 index 의 자리가 0이면 다음 순회로 넘어간다.
+    //todo: 숫자가 존재하면 해당 index 는 0 으로 변환되며, 숫자를 스택에 넣는다.
+    //todo: 스택에 넣기전에, 똑같은 숫자가 header 에 존재하면 넣지않고, header를 제거한다. 동시에 카운터를 + 1 한다.
+
+    val stack: Stack<Int> = Stack()
+    var score: Int = 0
+
+    moves.forEach { move ->
+        val index = move-1
+        for(array in board) {
+            val dol = array[index]
+            if(dol == 0) continue
+
+            array[index] = 0
+
+            if(stack.isEmpty().not() && stack.peek() == dol) {
+                stack.pop()
+                score++
+            }
+            else {
+                stack.push(dol)
+            }
+
+            break
+        }
+    }
+
+    answer = score * 2
+
+    return answer
+}
+
+```
+
+# 정답 (2023-02-19)
 
 ---
 
@@ -85,7 +132,7 @@ fun solution(board: Array<IntArray>, moves: IntArray): Int {
 }
 ```
 
-- **java.util. 에서 지원하는 stack 을 사용한다.**
+- **java.util.* 에서 지원하는 stack 을 사용한다.**
     - 만약 stack을 지원 안하면, 직접 stack 자료구조를 사용한다.
     - pop → 마지막 아이템 반환 및 마지막 아이템 삭제
     - push → 마지막 인덱스에 아이템 삽입
