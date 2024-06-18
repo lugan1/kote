@@ -5,7 +5,7 @@ import java.util.*
 
 
 fun main() {
-/*    solution("...!@BaT#*..y.abcdefghijklm").run {
+    solution("...!@BaT#*..y.abcdefghijklm").run {
         assertEquals("bat.y.abcdefghi", this)
     }
 
@@ -23,7 +23,7 @@ fun main() {
 
     solution("abcdefghijklmn.p").run {
         assertEquals("abcdefghijklmn", this)
-    }*/
+    }
 
     solution("s....s").run {
         assertEquals("s.s", this)
