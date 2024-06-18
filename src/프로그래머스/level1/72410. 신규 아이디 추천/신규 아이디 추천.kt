@@ -43,7 +43,7 @@ fun solution(new_id: String): String {
     val step2 = step1.filter { it.toString().matches(regex) }
 
     //todo: 3단계 new_id 에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환한다.
-    val regex2 = Regex(".{2,}")
+    val regex2 = Regex("\\.{2,}")
     val step3 = step2.replace(regex2, ".")
 
     //todo: 4단계 new_id 에서 마침표(.)가 처음이나 끝에 위치한다면 제거한다.
