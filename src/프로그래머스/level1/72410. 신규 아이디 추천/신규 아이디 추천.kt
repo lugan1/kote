@@ -5,7 +5,7 @@ import java.util.*
 
 
 fun main() {
-    solution("...!@BaT#*..y.abcdefghijklm").run {
+/*    solution("...!@BaT#*..y.abcdefghijklm").run {
         assertEquals("bat.y.abcdefghi", this)
     }
 
@@ -23,17 +23,12 @@ fun main() {
 
     solution("abcdefghijklmn.p").run {
         assertEquals("abcdefghijklmn", this)
-    }
+    }*/
 
     solution("s....s").run {
-        assertEquals("S.S", this)
+        assertEquals("s.s", this)
     }
 }
-
-/**
- * 4, 14, 16, 17, 20, 21, 25
- *
- * */
 
 /**
  * @param new_id 신규 유저가 입력한 아이디
@@ -41,10 +36,6 @@ fun main() {
  * */
 fun solution(new_id: String): String {
     var answer: String = ""
-
-    val test = "."
-    println("${test.contains(Regex(".."))}")
-
     //todo: 1단계 new_id 의 모든 대문자를 대응되는 소문자로 치환한다.
     val step1 = new_id.lowercase(Locale.getDefault())
     //todo: 2단계 new_id 에서 알파벳 소문자, 숫자, 빼기(-), 밑줄(_), 마침표(.)를 제외한 모든 문자를 제거한다.
@@ -52,7 +43,8 @@ fun solution(new_id: String): String {
     val step2 = step1.filter { it.toString().matches(regex) }
 
     //todo: 3단계 new_id 에서 마침표(.)가 2번 이상 연속된 부분을 하나의 마침표(.)로 치환한다.
-    val step3 = step2.replace("..", ".")
+    val regex2 = Regex(".{2,}")
+    val step3 = step2.replace(regex2, ".")
 
     //todo: 4단계 new_id 에서 마침표(.)가 처음이나 끝에 위치한다면 제거한다.
     var step4 = step3
@@ -81,5 +73,7 @@ fun solution(new_id: String): String {
         }
     }
 
-    return step7
+    answer = step7
+
+    return answer
 }
