@@ -21,7 +21,7 @@
 - 5 ≤ `s`의 길이 ≤ 50
 - 1 ≤ `skip`의 길이 ≤ 10
 - `s`와 `skip`은 알파벳 소문자로만 이루어져 있습니다.
-    - `skip`에 포함되는 알파벳은 `s`에 포함되지 않습니다.
+  - `skip`에 포함되는 알파벳은 `s`에 포함되지 않습니다.
 - 1 ≤ `index` ≤ 20
 
 ---
@@ -38,7 +38,65 @@
 
 입출력 예 #1본문 내용과 일치합니다.
 
-# 정답
+# 모범답안
+
+---
+
+```kotlin
+class Solution {
+    fun solution(s: String, skip: String, index: Int): String {
+        var answer: String = ""
+        val skipped = skip.map { it.toChar() }
+        val alphabet = ('a'..'z').filter { it !in skipped }
+
+        s.forEach {
+            val i = (alphabet.indexOf(it) + index) % alphabet.size
+            answer += alphabet[i]
+        }
+        return answer
+    }
+}
+```
+
+# 정답 (2024-06-25)
+
+---
+
+```kotlin
+/**
+ * @param s 문자열
+ * @param skip 스킵할 문자열
+ * @param index 해당 숫자만큼 이동
+ * @return String 완성된 암호
+ * */
+fun solution(s: String, skip: String, index: Int): String {
+    var answer: String = ""
+
+    // a : 97 ~ z : 122
+    answer = s.map { c ->
+        var count = 0
+        var result = c
+        while (count < index) {
+            result += 1
+            if(result > 'z') result = 'a'
+            if(skip.contains(result)) continue
+
+            count++
+        }
+
+        result
+    }.joinToString("")
+
+    return answer
+}
+```
+
+- s 를 순회하며 c 를 증가시킨다.
+  - 증가시킨 count 가 index 가 될때까지 증가시킨다
+  - 만약 z 를 넘어서면 다시 ‘a’ 로 처음부터 시작한다.
+  - 만약 증가시킨 횟수가 skip 에 포함되어 있으면 count 를 건너뛴다.
+
+# 정답 (2023-02-23)
 
 ---
 
@@ -71,6 +129,6 @@ fun Char.incAndCircle() : Char {
 ```
 
 - index 까지 + 1 씩더하고, +1 더할때마다 ‘z’ 를 넘어갔는지 검사한다.
-    - 넘어갔으면 -26 (a~z 가 26글자이니) 해서 처음으로 되돌린다.
+  - 넘어갔으면 -26 (a~z 가 26글자이니) 해서 처음으로 되돌린다.
 
 - 마지막 연산으로 더한 값이 skip 에 속해있으면 +1 씩 계속 더한다.
